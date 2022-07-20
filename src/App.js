@@ -2,7 +2,8 @@ import React from "react";
 import useTimer from "./useTimer";
 
 function App() {
-  const { renderTime, startTimer, stopTimer, resetTimer, active } = useTimer(0);
+  const { renderTime, startTimer, stopTimer, resetTimer, lap, split, active } =
+    useTimer();
 
   return (
     <div className="App container">
@@ -10,7 +11,13 @@ function App() {
       <div className="timer__wrapper">
         <div className="timer__display">
           <p>{renderTime}</p>
+          <ul>
+            {split.current.map((item) => (
+              <li className="lapItem">{item}</li>
+            ))}
+          </ul>
         </div>
+
         <div className="button__wrapper">
           <button className="button" onClick={stopTimer}>
             Stop
@@ -20,6 +27,9 @@ function App() {
           </button>
           <button className="button" onClick={resetTimer}>
             Reset
+          </button>
+          <button className="button" onClick={lap}>
+            Lap
           </button>
         </div>
       </div>
