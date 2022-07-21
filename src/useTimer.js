@@ -41,6 +41,7 @@ const useTimer = () => {
     clearInterval(count.current);
     count.current = null;
     isStart.current = false;
+    split.current = [];
     update();
     active.current.disabled = false;
   };
